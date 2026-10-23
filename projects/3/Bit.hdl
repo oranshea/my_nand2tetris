@@ -9,8 +9,16 @@
  */
 CHIP Bit {
     IN in, load;
-    OUT out;
-
+    OUT out1;
+/*
+in load out
+0   0   0
+1   0   0
+0   1   0
+1   1   1
+*/
     PARTS:
-    //// Replace this comment with your code.
+        Mux(a=dout , b=in , sel=load , out=which );
+        DFF(in=which , out=dout, out=out );
+        
 }
